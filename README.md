@@ -1,6 +1,6 @@
 # Synthetic Surgical Registry Power BI Dashboard
 
-Professional Power BI dashboard for a simulated surgical registry. The report is designed for operational monitoring, follow-up tracking, adverse event review, and data quality oversight across three registry modules.
+Professional Power BI dashboard and reproducible synthetic data pipeline for a surgical registry. The project is designed for operational monitoring, follow-up tracking, adverse event review, and data quality oversight across three registry modules.
 
 ![Dashboard preview](assets/dashboard-preview.png)
 
@@ -34,6 +34,7 @@ The dashboard is organized into two report pages:
 │   ├── 02_quality_checks.sql
 │   ├── README.md
 │   └── build_registry_dataset.py
+├── LICENSE
 └── powerbi/
     ├── Project4_Final_Dashboard.pbip
     ├── Project4_Final_Dashboard.Report/
