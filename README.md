@@ -20,9 +20,7 @@ The dashboard is organized into two report pages:
 ├── assets/
 │   └── dashboard-preview.png
 ├── docs/
-│   ├── OPEN_POWERBI_FIRST.txt
-│   ├── PROJECT4_POWERBI_HANDOFF_legacy.md
-│   └── dashboard-preview.html
+│   └── OPENING_GUIDE.md
 └── powerbi/
     ├── Project4_Final_Dashboard.pbip
     ├── Project4_Final_Dashboard.Report/
