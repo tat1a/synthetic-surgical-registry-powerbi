@@ -9,3 +9,7 @@ Thumbs.db
 *.tmp
 *.bak
 ~$*
+
+# Python generated files
+__pycache__/
+*.pyc
