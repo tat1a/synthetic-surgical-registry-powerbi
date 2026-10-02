@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e0000000000000000001",
+  "position": {
+    "x": 35,
+    "y": 678.33333333333337,
+    "z": 41000,
+    "height": 41.666666666666671,
+    "width": 1040.8333333333335,
+    "tabOrder": 41000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Prepared for registry workflow validation. Data are simulated test records and should not be used for clinical inference.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#52606d"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

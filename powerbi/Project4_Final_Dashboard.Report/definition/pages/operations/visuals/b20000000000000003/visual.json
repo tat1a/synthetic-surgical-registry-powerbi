@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b20000000000000003",
+  "position": {
+    "x": 658.31023418418658,
+    "y": 129.46506393371965,
+    "z": 11000,
+    "height": 92.587136631387381,
+    "width": 241.66811934294336,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "COMPLETED VISITS",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "9pt",
+                      "color": "#5d6b78"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "1,012",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "26pt",
+                      "color": "#13202b"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Captured follow-up visits",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#52606d"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

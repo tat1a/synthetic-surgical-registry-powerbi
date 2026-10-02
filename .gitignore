@@ -1,0 +1,11 @@
+# Power BI local settings
+**/.pbi/localSettings.json
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary exports and local archives
+*.tmp
+*.bak
+~$*

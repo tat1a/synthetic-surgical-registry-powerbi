@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c4000000000000000001",
+  "position": {
+    "x": 67.044799487599192,
+    "y": 505.26515555871856,
+    "z": 29000,
+    "height": 35.951559145524207,
+    "width": 514.981793165617,
+    "tabOrder": 29000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Each module contains 100 test records for workflow validation.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#52606d"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

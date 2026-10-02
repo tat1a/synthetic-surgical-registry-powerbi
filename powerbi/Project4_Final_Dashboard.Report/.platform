@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Synthetic_Surgical_Registry"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2d69630e-332d-4a82-b518-6fa67c5e267f"
+  }
+}

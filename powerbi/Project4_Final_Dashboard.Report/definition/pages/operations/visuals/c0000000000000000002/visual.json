@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c0000000000000000002",
+  "position": {
+    "x": 38.866550427593737,
+    "y": 263.32087914694756,
+    "z": 16000,
+    "height": 47.611524273802324,
+    "width": 448.90865743870762,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Participants by surgical module",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "17pt",
+                      "color": "#13202b"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

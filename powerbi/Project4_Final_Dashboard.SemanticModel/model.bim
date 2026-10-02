@@ -1,0 +1,317 @@
+{
+  "compatibilityLevel": 1606,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"cohort_counts\",\"followup_by_cohort\",\"ae_by_cohort\",\"challenge_queries_by_rule\",\"field_completeness\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "cohort_counts",
+        "columns": [
+          {
+            "name": "cohort",
+            "dataType": "string",
+            "lineageTag": "5242301e-b238-41c2-aaa5-f2559656db4b",
+            "sourceColumn": "cohort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "participant_count",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "bac1947a-e8fa-438c-9933-6dffdb3987c0",
+            "sourceColumn": "participant_count",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "5313b233-88c9-42c8-b343-fa16a93351f1",
+        "measures": [
+          {
+            "name": "Participants",
+            "expression": "SUM(cohort_counts[participant_count])",
+            "formatString": "#,0",
+            "lineageTag": "ee0a8ec1-a226-453e-8ec4-25bbf978e43e"
+          },
+          {
+            "name": "Planned Visits",
+            "expression": "SUM(followup_by_cohort[planned])",
+            "formatString": "#,0",
+            "lineageTag": "3ea374ee-f02a-4a3c-9889-e85a183b1eb3"
+          },
+          {
+            "name": "Completed Visits",
+            "expression": "SUM(followup_by_cohort[completed])",
+            "formatString": "#,0",
+            "lineageTag": "78c02fb8-323c-44c5-a67e-b5f23fba9897"
+          },
+          {
+            "name": "Follow-up Completion",
+            "expression": "DIVIDE([Completed Visits], [Planned Visits])",
+            "formatString": "0.0%;-0.0%;0.0%",
+            "lineageTag": "aefca01c-1c54-4d93-ab97-1d17b24b339c"
+          },
+          {
+            "name": "Challenge Queries",
+            "expression": "SUM(challenge_queries_by_rule[query_count])",
+            "formatString": "#,0",
+            "lineageTag": "74cfbc34-0a65-415e-b978-a4437c86934d"
+          },
+          {
+            "name": "Event Records",
+            "expression": "SUM(ae_by_cohort[event_count])",
+            "formatString": "#,0",
+            "lineageTag": "775fdd01-8e7c-4bf0-a551-7592e04f54c1"
+          },
+          {
+            "name": "Serious Event Flags",
+            "expression": "SUM(ae_by_cohort[serious_count])",
+            "formatString": "#,0",
+            "lineageTag": "31f64437-c4b2-478a-861f-e5227260dbe2"
+          },
+          {
+            "name": "Missing Cells",
+            "expression": "SUM(field_completeness[missing])",
+            "formatString": "#,0",
+            "lineageTag": "e08f3ba4-d2de-4e1e-8480-8f7d19758aab"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "cohort_counts",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [cohort = text, participant_count = Int64.Type], {{\"breast\", 100}, {\"nerve\", 100}, {\"wound\", 100}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "followup_by_cohort",
+        "columns": [
+          {
+            "name": "cohort",
+            "dataType": "string",
+            "lineageTag": "6b48c328-e748-4151-bcb8-87909c76e9ef",
+            "sourceColumn": "cohort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "day_target",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "ff52309d-5f33-43b1-b7b6-67082abf77f1",
+            "sourceColumn": "day_target",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "planned",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "eddc07ad-3035-4bff-8237-19c5a1a9cdee",
+            "sourceColumn": "planned",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "completed",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "a16587a5-d614-4946-82d6-8184161fc9ea",
+            "sourceColumn": "completed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "missed",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "320f317e-9f01-4764-9814-1a704202e5c9",
+            "sourceColumn": "missed",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "8ee71718-2503-48cd-814f-15b46bd0b552",
+        "partitions": [
+          {
+            "name": "followup_by_cohort",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [cohort = text, day_target = Int64.Type, planned = Int64.Type, completed = Int64.Type, missed = Int64.Type], {{\"breast\", 30, 100, 83, 17}, {\"breast\", 90, 100, 88, 12}, {\"breast\", 180, 100, 90, 10}, {\"breast\", 365, 100, 80, 20}, {\"nerve\", 30, 100, 84, 16}, {\"nerve\", 90, 100, 90, 10}, {\"nerve\", 180, 100, 94, 6}, {\"nerve\", 365, 100, 71, 29}, {\"wound\", 30, 100, 92, 8}, {\"wound\", 90, 100, 85, 15}, {\"wound\", 180, 100, 83, 17}, {\"wound\", 365, 100, 72, 28}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ae_by_cohort",
+        "columns": [
+          {
+            "name": "cohort",
+            "dataType": "string",
+            "lineageTag": "b392ba4b-f281-4937-a4b7-27691026e75e",
+            "sourceColumn": "cohort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "event_count",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "6e62148f-b532-4a47-9e71-701c28606bbd",
+            "sourceColumn": "event_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "serious_count",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "25c94d87-a368-4ebd-ac47-96042cb71e67",
+            "sourceColumn": "serious_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "unnotified_serious_count",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "7dc6fa7b-9523-4fb9-8faf-4fd52cb7e365",
+            "sourceColumn": "unnotified_serious_count",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "9fc56ac9-e608-4e40-bb4a-6808560cb110",
+        "partitions": [
+          {
+            "name": "ae_by_cohort",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [cohort = text, event_count = Int64.Type, serious_count = Int64.Type, unnotified_serious_count = Int64.Type], {{\"breast\", 14, 2, 0}, {\"nerve\", 20, 2, 0}, {\"wound\", 18, 1, 0}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "challenge_queries_by_rule",
+        "columns": [
+          {
+            "name": "rule_id",
+            "dataType": "string",
+            "lineageTag": "7a80b35f-22df-45cb-9e3d-03daca783b60",
+            "sourceColumn": "rule_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "query_count",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "44f2c689-2034-4d01-9dbb-4980716cf036",
+            "sourceColumn": "query_count",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "e2f70ddc-e1c6-4a3a-96b4-59125261007b",
+        "partitions": [
+          {
+            "name": "challenge_queries_by_rule",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [rule_id = text, query_count = Int64.Type], {{\"CHRONOLOGY\", 3}, {\"COHORT_MISMATCH\", 3}, {\"FOLLOWUP_DUE\", 15}, {\"FOLLOWUP_STATUS\", 3}, {\"MODULE_MISSING\", 3}, {\"SAE_NOTIFICATION\", 3}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "field_completeness",
+        "columns": [
+          {
+            "name": "table_name",
+            "dataType": "string",
+            "lineageTag": "8ab942df-f373-4e70-aca8-a2b7186ea188",
+            "sourceColumn": "table_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "field_name",
+            "dataType": "string",
+            "lineageTag": "4b77c066-2672-462b-ad96-afcd3da77d30",
+            "sourceColumn": "field_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "nonmissing",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "5cbb0f54-360e-4ed8-8b8c-95b0df9701c4",
+            "sourceColumn": "nonmissing",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rows",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "29c65816-8552-4f5c-ad56-0a18402ced08",
+            "sourceColumn": "rows",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "missing",
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "08cc5955-9cd6-4761-8d11-8269d9488e78",
+            "sourceColumn": "missing",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ad9c5411-f11c-4100-8ae8-91f7af9c878c",
+        "partitions": [
+          {
+            "name": "field_completeness",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [table_name = text, field_name = text, nonmissing = Int64.Type, rows = Int64.Type, missing = Int64.Type], {{\"participants\", \"participant_id\", 300, 300, 0}, {\"participants\", \"cohort\", 300, 300, 0}, {\"participants\", \"age_band\", 300, 300, 0}, {\"participants\", \"enrolled_on\", 300, 300, 0}, {\"procedures\", \"procedure_id\", 300, 300, 0}, {\"procedures\", \"participant_id\", 300, 300, 0}, {\"procedures\", \"cohort\", 300, 300, 0}, {\"procedures\", \"procedure_on\", 300, 300, 0}, {\"procedures\", \"procedure_type\", 300, 300, 0}, {\"breast_module\", \"procedure_id\", 100, 100, 0}, {\"breast_module\", \"intent\", 100, 100, 0}, {\"breast_module\", \"laterality\", 100, 100, 0}, {\"breast_module\", \"implant_used\", 100, 100, 0}, {\"nerve_module\", \"procedure_id\", 100, 100, 0}, {\"nerve_module\", \"injury_level\", 100, 100, 0}, {\"nerve_module\", \"technique\", 100, 100, 0}, {\"nerve_module\", \"target_function\", 100, 100, 0}, {\"wound_module\", \"procedure_id\", 100, 100, 0}, {\"wound_module\", \"region\", 100, 100, 0}, {\"wound_module\", \"coverage\", 100, 100, 0}, {\"wound_module\", \"defect_size\", 100, 100, 0}, {\"followups\", \"followup_id\", 1200, 1200, 0}, {\"followups\", \"participant_id\", 1200, 1200, 0}, {\"followups\", \"day_target\", 1200, 1200, 0}, {\"followups\", \"due_on\", 1200, 1200, 0}, {\"followups\", \"status\", 1200, 1200, 0}, {\"followups\", \"visit_on\", 1012, 1200, 188}, {\"followups\", \"function_score\", 1012, 1200, 188}, {\"adverse_events\", \"event_id\", 52, 52, 0}, {\"adverse_events\", \"procedure_id\", 52, 52, 0}, {\"adverse_events\", \"event_on\", 52, 52, 0}, {\"adverse_events\", \"term\", 52, 52, 0}, {\"adverse_events\", \"severity\", 52, 52, 0}, {\"adverse_events\", \"serious\", 52, 52, 0}, {\"adverse_events\", \"notified_on\", 5, 52, 47}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
