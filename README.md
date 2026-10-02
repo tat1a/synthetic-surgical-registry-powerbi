@@ -19,8 +19,21 @@ The dashboard is organized into two report pages:
 .
 ├── assets/
 │   └── dashboard-preview.png
+├── data/
+│   └── processed/
+│       ├── ae_by_cohort.csv
+│       ├── challenge_queries_by_rule.csv
+│       ├── cohort_counts.csv
+│       ├── field_completeness.csv
+│       └── followup_by_cohort.csv
 ├── docs/
+│   ├── DATA_DICTIONARY.md
 │   └── OPENING_GUIDE.md
+├── pipeline/
+│   ├── 01_schema.sql
+│   ├── 02_quality_checks.sql
+│   ├── README.md
+│   └── build_registry_dataset.py
 └── powerbi/
     ├── Project4_Final_Dashboard.pbip
     ├── Project4_Final_Dashboard.Report/
@@ -44,6 +57,16 @@ The dashboard supports:
 - challenge-query monitoring;
 - missingness and field-completeness review;
 - presentation-ready registry reporting.
+
+## Data Pipeline
+
+The `pipeline/` folder documents how the registry dataset is structured, checked, and summarized before reporting:
+
+- `01_schema.sql` defines the relational registry tables.
+- `02_quality_checks.sql` contains reusable validation checks for missingness, follow-up status, event notification, and module consistency.
+- `build_registry_dataset.py` creates deterministic synthetic registry records and exports the processed summary tables used by the dashboard.
+
+The processed CSV outputs are included under `data/processed/` for transparent review.
 
 ## Data Summary
 
